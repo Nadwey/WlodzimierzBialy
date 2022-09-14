@@ -23,9 +23,7 @@ void ACharacter2D::BeginPlay()
 void ACharacter2D::Tick(float DeltaTime)
 {
 	FVector playerLocation = GetWorld()->GetFirstPlayerController()->GetPawn()->GetActorLocation();
-	float newYawRotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), playerLocation).Yaw;
-	FRotator newRotation = this->GetActorRotation();
-	newRotation.Yaw = newYawRotation - 90;
+	FRotator newRotation = UKismetMathLibrary::FindLookAtRotation(this->GetActorLocation(), playerLocation);
 
 	this->SetActorRotation(newRotation);
 
